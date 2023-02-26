@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package api.role.role;
+
+import "google/api/annotations.proto";
+
+option go_package = "kratosent/api/role;role";
+option java_multiple_files = true;
+option java_package = "api.role.role";
+
+service Role {
+	rpc CreateRole (CreateRoleRequest) returns (CreateRoleReply){
+		option (google.api.http) = {
+			post:"/v1/role"
+			body:"*"
+		};
+	};
+	rpc UpdateRole (UpdateRoleRequest) returns (UpdateRoleReply) {
+		option (google.api.http) = {
+			put:"/v1/role"
+			body:"*"
+		};
+	};
+	rpc DeleteRole (DeleteRoleRequest) returns (DeleteRoleReply) {
+		option (google.api.http) = {
+			delete:"/v1/role/{id}"
+		};
+	};
+	rpc GetRole (GetRoleRequest) returns (GetRoleReply) {
+		option (google.api.http) = {
+			get: "/v1/role/{id}"
+		};
+	};
+	rpc ListRole (ListRoleRequest) returns (ListRoleReply) {
+		option (google.api.http) = {
+			post:"/v1/role/list"
+			body:"*"
+		};
+	};
+}
+
+message RoleInfo {
+	int64 id = 1;
+	string name = 2;
+	string description = 3;
+	string create_at = 4;
+	string update_at = 5;
+	int32 is_del = 6;
+}
+
+message CreateRoleRequest {
+	string name = 1;
+	string description = 2;
+}
+
+message CreateRoleReply {
+	int64 id = 1;
+}
+
+message UpdateRoleRequest {
+	int64 id = 1;
+	string name = 2;
+	string description = 3;
+}
+message UpdateRoleReply {
+	int64 id = 1;
+}
+
+message DeleteRoleRequest {
+	int64 id = 1;
+}
+message DeleteRoleReply {
+	int64 id = 1;
+}
+
+message GetRoleRequest {
+	int64 id = 1;
+}
+message GetRoleReply {
+	RoleInfo role = 1;
+}
+
+message ListRoleRequest {
+	repeated int64 ids = 1;	
+}
+message ListRoleReply {
+	repeated RoleInfo roles = 1;
+}

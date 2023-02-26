@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package api.department.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "kratosent/api/department/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.department.v1";
+
+service Department {
+	rpc CreateDepartment (CreateDepartmentRequest) returns (CreateDepartmentReply) {
+		option (google.api.http) = {
+			post: "/v1/department"
+			body: "*"
+		};
+	};
+	rpc UpdateDepartment (UpdateDepartmentRequest) returns (UpdateDepartmentReply) {
+		option (google.api.http) = {
+			put: "/v1/department"
+			body: "*"
+		};
+	};
+	rpc DeleteDepartment (DeleteDepartmentRequest) returns (DeleteDepartmentReply) {
+		option (google.api.http) = {
+			delete: "/v1/department/{department_id}"
+		};
+	};
+	rpc GetDepartment (GetDepartmentRequest) returns (GetDepartmentReply) {
+		option (google.api.http) = {
+			get: "/v1/department"
+		};
+	};
+	rpc ListDepartment (ListDepartmentRequest) returns (ListDepartmentReply) {
+		option (google.api.http) = {
+			post: "/v1/department/list"
+			body:"*"
+		};
+	};
+}
+
+message CreateDepartmentRequest {
+	int64 parent_department_id = 1;
+	string department_name = 2;
+}
+message CreateDepartmentReply {
+	int64 department_id = 1;
+}
+
+message UpdateDepartmentRequest {
+	int64 department_id = 1;
+	string department_name = 2;
+}
+message UpdateDepartmentReply {
+	int64 deparment_id = 1;	
+}
+
+message DeleteDepartmentRequest {
+	int64 department_id = 1;
+}
+message DeleteDepartmentReply {
+	int64 department_id = 1;
+}
+
+message DepartmentInfo {
+	int64 department_id = 1;
+	int64 parent_department_id = 2;
+	string department_name = 3;
+}
+
+message GetDepartmentRequest {
+	int64 department_id = 1;
+}
+message GetDepartmentReply {
+	DepartmentInfo department = 1;
+}
+
+message ListDepartmentRequest {
+	repeated int64 department_ids = 1;
+}
+message ListDepartmentReply {
+	repeated DepartmentInfo departments = 1;
+}

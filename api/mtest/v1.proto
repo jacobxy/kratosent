@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package api.mtest;
+
+import "google/api/annotations.proto";
+
+option go_package = "kratosent/api/mtest;mtest";
+option java_multiple_files = true;
+option java_package = "api.mtest";
+
+service V1 {
+	rpc CreateV1 (CreateV1Request) returns (CreateV1Reply){
+		option (google.api.http) = {
+			get:"/mtest"
+		};
+	};
+	rpc UpdateV1 (UpdateV1Request) returns (UpdateV1Reply);
+	rpc DeleteV1 (DeleteV1Request) returns (DeleteV1Reply);
+	rpc GetV1 (GetV1Request) returns (GetV1Reply);
+	rpc ListV1 (ListV1Request) returns (ListV1Reply);
+}
+
+message CreateV1Request {}
+message CreateV1Reply {}
+
+message UpdateV1Request {}
+message UpdateV1Reply {}
+
+message DeleteV1Request {}
+message DeleteV1Reply {}
+
+message GetV1Request {}
+message GetV1Reply {}
+
+message ListV1Request {}
+message ListV1Reply {}

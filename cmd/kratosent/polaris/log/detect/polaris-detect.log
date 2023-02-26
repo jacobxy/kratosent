@@ -1,0 +1,1 @@
+2023-02-25 20:20:51.594316Z	info	detect	cbcheck/ticker.go:69	instances not initialized for {namespace: "default", service: "kratosent"}

@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package otc.otc;
+
+option go_package = "kratosent/api/otc;otc";
+
