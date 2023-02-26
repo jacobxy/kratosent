@@ -30,3 +30,14 @@ data:
     addrs:
       - 127.0.0.1:8091
     namespace: kratosent    
+
+middleware:
+  prometheus:
+    histogram:
+      namespace: server
+      subsystem: requests
+      name: duration_sec
+    counter:
+      namespace: client
+      subsystem: requests
+      name: code_total

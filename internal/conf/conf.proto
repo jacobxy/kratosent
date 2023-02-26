@@ -10,6 +10,11 @@ message Bootstrap {
   Data data = 2;
   Register register = 3;
   MidConfig mid_config = 4;
+  Middleware middleware = 5;
+}
+
+message Middleware {
+  Prometheus prometheus = 1;
 }
 
 message Server {
@@ -57,4 +62,14 @@ message MidConfig {
   string namespace  = 2;
   string file_group = 3;
   string file_name = 4;
+}
+
+message Prometheus {
+  message VecConf {
+    string namespace = 1;
+    string subsystem = 2;
+    string name = 3;
+  }
+  VecConf histogram = 1;
+  VecConf counter = 2;
 }

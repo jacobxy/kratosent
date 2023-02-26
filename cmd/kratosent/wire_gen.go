@@ -12,6 +12,7 @@ import (
 	"kratosent/internal/biz"
 	"kratosent/internal/conf"
 	"kratosent/internal/data"
+	"kratosent/internal/middleware"
 	"kratosent/internal/server"
 	"kratosent/internal/service"
 )
@@ -19,7 +20,7 @@ import (
 // Injectors from wire.go:
 
 // wireApp init kratos application.
-func wireApp(confServer *conf.Server, confData *conf.Data, register *conf.Register, midConfig *conf.MidConfig, logger log.Logger) (*kratos.App, func(), error) {
+func wireApp(confServer *conf.Server, confData *conf.Data, register *conf.Register, midConfig *conf.MidConfig, confMiddleware *conf.Middleware, logger log.Logger) (*kratos.App, func(), error) {
 	client, cleanup, err := data.NewEntCli(confData, logger)
 	if err != nil {
 		return nil, nil, err
@@ -39,9 +40,11 @@ func wireApp(confServer *conf.Server, confData *conf.Data, register *conf.Regist
 	roleUsecase := biz.NewRoleUsecase(roleRepo, logger)
 	roleService := service.NewRoleService(roleUsecase)
 	v := service.NewGRPCServiceSlice(greeterService, departmentService, roleService)
-	grpcServer := server.NewGRPCServer(confServer, v, logger)
+	histogramVec := middleware.NewPrometheusHistogramVec(confMiddleware)
+	counterVec := middleware.NewPrometheusCounterVec(confMiddleware)
+	grpcServer := server.NewGRPCServer(confServer, v, histogramVec, counterVec, logger)
 	v2 := service.NewHTTPServiceSlice(greeterService, departmentService, roleService)
-	httpServer := server.NewHTTPServer(confServer, v2, logger)
+	httpServer := server.NewHTTPServer(confServer, v2, histogramVec, counterVec, logger)
 	app := newApp(logger, grpcServer, httpServer, confData, register, midConfig)
 	return app, func() {
 		cleanup2()

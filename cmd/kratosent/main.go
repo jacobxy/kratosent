@@ -50,6 +50,7 @@ func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server,
 		polaris.WithNamespace(register.Polaris.Namespace),
 	)
 	midconf.NewMidConfig(midcf)
+
 	return kratos.New(
 		kratos.ID(id),
 		kratos.Name(Name),
@@ -94,7 +95,14 @@ func main() {
 		panic(err)
 	}
 
-	app, cleanup, err := wireApp(bc.Server, bc.Data, bc.Register, bc.MidConfig, logger)
+	app, cleanup, err := wireApp(
+		bc.Server,
+		bc.Data,
+		bc.Register,
+		bc.MidConfig,
+		bc.Middleware,
+		logger,
+	)
 	if err != nil {
 		panic(err)
 	}
