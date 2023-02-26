@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"kratosent/internal/conf"
+	"kratosent/internal/midconf"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/config"
@@ -34,7 +35,11 @@ func init() {
 	flag.StringVar(&flagconf, "conf", "../../configs", "config path, eg: -conf config.yaml")
 }
 
-func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server, data *conf.Data, register *conf.Register) *kratos.App {
+func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server,
+	data *conf.Data,
+	register *conf.Register,
+	midcf *conf.MidConfig,
+) *kratos.App {
 	// priviopolaris.NewProviderAPI()
 
 	sdk, err := polarisV2.NewSDKContextByAddress(register.Polaris.Addrs...)
@@ -44,7 +49,7 @@ func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server, data *conf.Data
 	p := polaris.New(sdk,
 		polaris.WithNamespace(register.Polaris.Namespace),
 	)
-
+	midconf.NewMidConfig(midcf)
 	return kratos.New(
 		kratos.ID(id),
 		kratos.Name(Name),
@@ -89,7 +94,7 @@ func main() {
 		panic(err)
 	}
 
-	app, cleanup, err := wireApp(bc.Server, bc.Data, bc.Register, logger)
+	app, cleanup, err := wireApp(bc.Server, bc.Data, bc.Register, bc.MidConfig, logger)
 	if err != nil {
 		panic(err)
 	}

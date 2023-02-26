@@ -9,6 +9,7 @@ message Bootstrap {
   Server server = 1;
   Data data = 2;
   Register register = 3;
+  MidConfig mid_config = 4;
 }
 
 message Server {
@@ -49,4 +50,11 @@ message Data {
   Database database = 1;
   Redis redis = 2;
   Polaris department = 3;
+}
+
+message MidConfig {
+  repeated string addrs = 1;
+  string namespace  = 2;
+  string file_group = 3;
+  string file_name = 4;
 }

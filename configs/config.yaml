@@ -11,6 +11,13 @@ register:
     addrs:
       - 127.0.0.1:8091
     namespace: kratosent  
+mid_config:
+  addrs:
+    - 127.0.0.1:8091
+  namespace: default
+  file_group: polaris
+  file_name: config.yaml
+
 data:
   database:
     driver: mysql
