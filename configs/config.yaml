@@ -41,3 +41,11 @@ middleware:
       namespace: client
       subsystem: requests
       name: code_total
+
+log:
+  level: Debug
+  file: ./log/test.log
+  max_size: 10
+  max_backup: 5
+  max_age: 30
+  compress: false

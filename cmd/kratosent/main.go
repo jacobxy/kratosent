@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"os"
+	"time"
 
 	"kratosent/internal/conf"
 	"kratosent/internal/midconf"
@@ -11,10 +12,14 @@ import (
 	"github.com/go-kratos/kratos/v2/config"
 	"github.com/go-kratos/kratos/v2/config/file"
 	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/middleware/tracing"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
+	"github.com/natefinch/lumberjack"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
+	"mosn.io/holmes"
 
+	kzap "github.com/go-kratos/kratos/contrib/log/zap/v2"
 	polaris "github.com/go-kratos/kratos/contrib/polaris/v2"
 	polarisV2 "github.com/polarismesh/polaris-go"
 )
@@ -70,15 +75,16 @@ func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server,
 
 func main() {
 	flag.Parse()
-	logger := log.With(log.NewStdLogger(os.Stdout),
-		"ts", log.DefaultTimestamp,
-		"caller", log.DefaultCaller,
-		"service.id", id,
-		"service.name", Name,
-		"service.version", Version,
-		"trace.id", tracing.TraceID(),
-		"span.id", tracing.SpanID(),
-	)
+
+	// logger := log.With(log.NewStdLogger(os.Stdout),
+	// 	"ts", log.DefaultTimestamp,
+	// 	"caller", log.DefaultCaller,
+	// 	"service.id", id,
+	// 	"service.name", Name,
+	// 	"service.version", Version,
+	// 	"trace.id", tracing.TraceID(),
+	// 	"span.id", tracing.SpanID(),
+	// )
 	c := config.New(
 		config.WithSource(
 			file.NewSource(flagconf),
@@ -94,6 +100,12 @@ func main() {
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
 	}
+
+	logger := NewZapLoger(bc.Log)
+
+	mHolmes := NewHolmes()
+	mHolmes.Start()
+	defer mHolmes.Stop()
 
 	app, cleanup, err := wireApp(
 		bc.Server,
@@ -112,4 +124,46 @@ func main() {
 	if err := app.Run(); err != nil {
 		panic(err)
 	}
+}
+
+func NewZapLoger(logConf *conf.Log) log.Logger {
+	lumberJackLogger := lumberjack.Logger{
+		Filename:   logConf.File,
+		MaxSize:    int(logConf.MaxSize),
+		MaxBackups: int(logConf.MaxBackup),
+		MaxAge:     int(logConf.MaxAge),
+		Compress:   logConf.Compress,
+	}
+	writeSyncer := zapcore.AddSync(&lumberJackLogger)
+	core := zapcore.NewCore(getEncoder(), writeSyncer, zapcore.DebugLevel)
+	logger := zap.New(core, zap.AddCaller())
+	return kzap.NewLogger(logger)
+}
+
+func getEncoder() zapcore.Encoder {
+	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
+	return zapcore.NewConsoleEncoder(encoderConfig)
+}
+
+func NewHolmes() *holmes.Holmes {
+	h, _ := holmes.New(
+		holmes.WithCollectInterval("5s"),
+		holmes.WithDumpPath("./holmes"),
+		holmes.WithTextDump(),
+
+		holmes.WithCPUDump(10, 25, 80, time.Minute),
+		holmes.WithMemDump(30, 25, 80, time.Minute),
+		holmes.WithGCHeapDump(10, 20, 40, time.Minute),
+		holmes.WithGoroutineDump(500, 25, 20000, 0, time.Minute),
+		// holmes.WithCGroup(true),
+	)
+
+	h.EnableCPUDump().
+		EnableGoroutineDump().
+		EnableMemDump().
+		EnableGCHeapDump()
+
+	return h
 }

@@ -11,6 +11,7 @@ message Bootstrap {
   Register register = 3;
   MidConfig mid_config = 4;
   Middleware middleware = 5;
+  Log log = 6;
 }
 
 message Middleware {
@@ -72,4 +73,13 @@ message Prometheus {
   }
   VecConf histogram = 1;
   VecConf counter = 2;
+}
+
+message Log {
+  string level = 1;
+  string file = 2;
+  int64 max_size = 3;
+  int64 max_backup = 4;
+  int64 max_age = 5; 
+  bool compress = 6;
 }
