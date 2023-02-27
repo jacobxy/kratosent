@@ -3,10 +3,12 @@ package service
 import (
 	"context"
 	"fmt"
+	"log"
 
 	pb "kratosent/api/department/v1"
 	"kratosent/internal/biz"
 
+	"github.com/go-kratos/kratos/v2/metadata"
 	"github.com/jinzhu/copier"
 )
 
@@ -22,6 +24,13 @@ func NewDepartmentService(repo *biz.DepartmentUsecase) *DepartmentService {
 }
 
 func (s *DepartmentService) CreateDepartment(ctx context.Context, req *pb.CreateDepartmentRequest) (*pb.CreateDepartmentReply, error) {
+	var extra string
+	if md, ok := metadata.FromServerContext(ctx); ok {
+		// if md, ok := metadata.FromClientContext(ctx); ok {
+		extra = md.Get("x-md-global-extra")
+		log.Println("extra:", extra)
+	}
+
 	id, err := s.uc.Create(ctx, &biz.DepartmentInfo{
 		ParentDepartmentID: req.ParentDepartmentId,
 		Name:               req.GetDepartmentName(),

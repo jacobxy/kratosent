@@ -7,6 +7,7 @@ import (
 	"kratosent/internal/biz"
 
 	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/metadata"
 	"github.com/jinzhu/copier"
 )
 
@@ -38,11 +39,11 @@ func (r *RoleRepo) Create(ctx context.Context, role *biz.RoleInfo) (int64, error
 	if err != nil {
 		return 0, err
 	}
-
 	defer clearUp()
-
+	clientCtx := context.Background()
+	clientCtx = metadata.AppendToClientContext(clientCtx, "x-md-global-extra", "lok")
 	r.log.Info(
-		departmentCli.CreateDepartment(ctx, &v1.CreateDepartmentRequest{
+		departmentCli.CreateDepartment(clientCtx, &v1.CreateDepartmentRequest{
 			DepartmentName:     role.Name,
 			ParentDepartmentId: -1,
 		}),

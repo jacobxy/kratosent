@@ -3,6 +3,9 @@ package data
 import (
 	"context"
 	"fmt"
+
+	mmd "github.com/go-kratos/kratos/v2/middleware/metadata"
+
 	"github.com/go-kratos/kratos/v2/transport/http"
 
 	"github.com/go-kratos/kratos/contrib/polaris/v2"
@@ -18,6 +21,9 @@ func NewGRPCClient[T any](service string,p *polaris.Polaris, fc func (ogrpc.Clie
 		context.Background(),
 		grpc.WithEndpoint(fmt.Sprintf("discovery:///%s",service)),
 		grpc.WithDiscovery(p.Registry()),
+		grpc.WithMiddleware(
+			mmd.Client(),
+		),
 	)
 	if err != nil {
 		return empty,nil,err
@@ -35,6 +41,9 @@ func NewHTTPClient[T any](service string,p *polaris.Polaris, fc func(*http.Clien
 		context.Background(),
 		http.WithEndpoint(fmt.Sprintf("discovery:///%s",service)),
 		http.WithDiscovery(p.Registry()),
+		http.WithMiddleware(
+			mmd.Client(),
+		),
 	)
 	if err != nil {
 		return empty,nil,err

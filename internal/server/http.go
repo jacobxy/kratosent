@@ -6,6 +6,7 @@ import (
 
 	prom "github.com/go-kratos/kratos/contrib/metrics/prometheus/v2"
 	"github.com/go-kratos/kratos/v2/log"
+	mmd "github.com/go-kratos/kratos/v2/middleware/metadata"
 	"github.com/go-kratos/kratos/v2/middleware/metrics"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/http"
@@ -27,6 +28,7 @@ func NewHTTPServer(c *conf.Server,
 				metrics.WithSeconds(prom.NewHistogram(histoVec)),
 				metrics.WithRequests(prom.NewCounter(counterVec)),
 			),
+			mmd.Server(),
 		),
 	}
 	if c.Http.Network != "" {
