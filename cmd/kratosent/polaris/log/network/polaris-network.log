@@ -5397,3 +5397,61 @@
 2023-02-28 02:00:03.359641Z	info	network	network/conn.go:100	connection {ID: 2888802074, Address: 127.0.0.1:8091}: close, curRef is 0
 2023-02-28 02:00:03.792751Z	info	network	common/discover.go:705	5CCDF18C-107C-479F-AA9C-531687693B9D, client connection {ID: 3539118593, Address: 127.0.0.1:8091} has switched
 2023-02-28 02:00:03.918956Z	info	network	network/conn.go:100	connection {ID: 304946984, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:48.113937Z	info	network	network/conn.go:100	connection {ID: 3586291180, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:49.119203Z	info	network	network/conn.go:100	connection {ID: 4239550697, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:50.130759Z	info	network	network/conn.go:100	connection {ID: 1082323377, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:50.183064Z	info	network	network/conn.go:100	connection {ID: 2784622126, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-02-28 12:47:50.706872Z	info	network	network/conn.go:100	connection {ID: 3939000551, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:51.222931Z	info	network	network/conn.go:100	connection {ID: 3674156269, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:56.035018Z	info	network	common/discover.go:630	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, stream 41850772320 created, connection {ID: 1332580530, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:47:56.035076Z	info	network	common/discover.go:633	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, newStream: add first or retry task {namespace: "kratosent", service: "kratosent", event: instance, longRun: firstTask} to new streamingClient 41850772320 pendingTasks
+2023-02-28 12:47:56.035098Z	info	network	common/discover.go:776	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, asyncUpdateTask: start to send request for {namespace: "kratosent", service: "kratosent", event: instance, longRun: firstTask} from streamingClient 41850772320
+2023-02-28 12:47:59.112059Z	info	network	common/discover.go:705	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, client connection {ID: 1332580530, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:47:59.112422Z	info	network	network/conn.go:100	connection {ID: 1332580530, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:47:59.112469Z	error	network	common/discover.go:495	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, receiveAndNotify: fail to receive message from connection {ID: 1332580530, Address: 127.0.0.1:8091}, streamingClient 41850772320, err rpc error: code = Canceled desc = grpc: the client connection is closing
+2023-02-28 12:47:59.612263Z	info	network	common/discover.go:705	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, client connection {ID: 1332580530, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:48:00.112152Z	info	network	common/discover.go:705	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, client connection {ID: 1332580530, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:48:00.613321Z	info	network	common/discover.go:705	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, client connection {ID: 1332580530, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:48:00.615635Z	info	network	common/discover.go:630	1468BCF3-2E26-48E3-B415-DF8BD8B49B8B, stream 42028037522 created, connection {ID: 3375889728, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:48:03.118517Z	info	network	network/conn.go:100	connection {ID: 3322233310, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:48:03.691999Z	info	network	network/conn.go:100	connection {ID: 773412884, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:48:59.597876Z	info	network	network/conn.go:100	connection {ID: 2796810701, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:00.613221Z	info	network	network/conn.go:100	connection {ID: 2281538675, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:01.626733Z	info	network	network/conn.go:100	connection {ID: 4018204675, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:01.632215Z	info	network	network/conn.go:100	connection {ID: 2304079680, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-02-28 12:49:01.753204Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 43946692480 created, connection {ID: 1935873457, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:01.753251Z	info	network	common/discover.go:633	B7958D30-47A9-4BA3-8858-72ECF8C07626, newStream: add first or retry task {namespace: "kratosent", service: "kratosent", event: instance, longRun: firstTask} to new streamingClient 43946692480 pendingTasks
+2023-02-28 12:49:01.753274Z	info	network	common/discover.go:776	B7958D30-47A9-4BA3-8858-72ECF8C07626, asyncUpdateTask: start to send request for {namespace: "kratosent", service: "kratosent", event: instance, longRun: firstTask} from streamingClient 43946692480
+2023-02-28 12:49:02.147980Z	info	network	network/conn.go:100	connection {ID: 405948571, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:02.656690Z	info	network	network/conn.go:100	connection {ID: 756339149, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:04.596444Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1935873457, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:04.597250Z	info	network	network/conn.go:100	connection {ID: 1935873457, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:04.597503Z	error	network	common/discover.go:495	B7958D30-47A9-4BA3-8858-72ECF8C07626, receiveAndNotify: fail to receive message from connection {ID: 1935873457, Address: 127.0.0.1:8091}, streamingClient 43946692480, err rpc error: code = Canceled desc = grpc: the client connection is closing
+2023-02-28 12:49:05.097584Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1935873457, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:05.597541Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1935873457, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:06.096448Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1935873457, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:06.596183Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1935873457, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:06.602011Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 4493794086 created, connection {ID: 156737223, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:10.595880Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 156737223, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:10.596609Z	error	network	common/discover.go:495	B7958D30-47A9-4BA3-8858-72ECF8C07626, receiveAndNotify: fail to receive message from connection {ID: 156737223, Address: 127.0.0.1:8091}, streamingClient 4493794086, err rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:54062->127.0.0.1:8091: use of closed network connection
+2023-02-28 12:49:10.596401Z	info	network	network/conn.go:100	connection {ID: 156737223, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:11.096185Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 156737223, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:11.596555Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 156737223, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:11.599533Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 41877270835 created, connection {ID: 1467664820, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:16.596114Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 1467664820, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:16.596340Z	info	network	network/conn.go:100	connection {ID: 1467664820, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:16.596769Z	error	network	common/discover.go:495	B7958D30-47A9-4BA3-8858-72ECF8C07626, receiveAndNotify: fail to receive message from connection {ID: 1467664820, Address: 127.0.0.1:8091}, streamingClient 41877270835, err rpc error: code = Canceled desc = grpc: the client connection is closing
+2023-02-28 12:49:16.597689Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 43610076949 created, connection {ID: 4023578177, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:22.596144Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 4023578177, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:22.596594Z	info	network	network/conn.go:100	connection {ID: 4023578177, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:22.596883Z	error	network	common/discover.go:495	B7958D30-47A9-4BA3-8858-72ECF8C07626, receiveAndNotify: fail to receive message from connection {ID: 4023578177, Address: 127.0.0.1:8091}, streamingClient 43610076949, err rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:54069->127.0.0.1:8091: use of closed network connection
+2023-02-28 12:49:23.096021Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 4023578177, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:23.596733Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 4023578177, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:24.096667Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 4023578177, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:24.099469Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 44014637593 created, connection {ID: 3762490139, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:28.056124Z	info	network	network/conn.go:100	connection {ID: 3904292340, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:28.596135Z	info	network	common/discover.go:705	B7958D30-47A9-4BA3-8858-72ECF8C07626, client connection {ID: 3762490139, Address: 127.0.0.1:8091} has switched
+2023-02-28 12:49:28.603379Z	info	network	network/conn.go:100	connection {ID: 3762490139, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-02-28 12:49:28.603470Z	error	network	common/discover.go:495	B7958D30-47A9-4BA3-8858-72ECF8C07626, receiveAndNotify: fail to receive message from connection {ID: 3762490139, Address: 127.0.0.1:8091}, streamingClient 44014637593, err rpc error: code = Canceled desc = grpc: the client connection is closing
+2023-02-28 12:49:28.604730Z	info	network	common/discover.go:630	B7958D30-47A9-4BA3-8858-72ECF8C07626, stream 43493165284 created, connection {ID: 2513388981, Address: 127.0.0.1:8091}, timeout 3s
+2023-02-28 12:49:28.622079Z	info	network	network/conn.go:100	connection {ID: 221964527, Address: 127.0.0.1:8091}: close, curRef is 0

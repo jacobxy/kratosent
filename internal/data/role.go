@@ -34,8 +34,8 @@ func (r *RoleRepo) Create(ctx context.Context, role *biz.RoleInfo) (int64, error
 	}
 
 	// departmentCli, clearUp, err := NewDepartmentClient(r.data.sdk)
-	departmentCli, clearUp, err := NewGRPCClient[v1.DepartmentClient]("kratosent", r.data.pol, v1.NewDepartmentClient)
-	// departmentCli, clearUp, err := NewHTTPClient[v1.DepartmentHTTPClient]("kratosent", r.data.pol, v1.NewDepartmentHTTPClient)
+	// departmentCli, clearUp, err := NewGRPCClient[v1.DepartmentClient]("kratosent", r.data.pol, v1.NewDepartmentClient)
+	departmentCli, clearUp, err := NewHTTPClient[v1.DepartmentHTTPClient]("kratosent", r.data.pol, v1.NewDepartmentHTTPClient)
 	if err != nil {
 		return 0, err
 	}
