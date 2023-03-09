@@ -21,6 +21,6 @@ EXPOSE 8000
 EXPOSE 9000
 VOLUME /data/conf
 
-COPY /src/configs/config.yaml /data/conf/
+COPY --from=builder /src/configs /data/conf
 
 CMD ["./kratosent", "-conf", "/data/conf"]
