@@ -3,7 +3,7 @@ FROM golang:1.20 AS builder
 COPY . /src
 WORKDIR /src
 
-RUN GOPROXY=https://goproxy.cn make build
+RUN GOPROXY=https://goproxy.cn,direct make build
 
 FROM debian:stable-slim
 
@@ -20,5 +20,7 @@ WORKDIR /app
 EXPOSE 8000
 EXPOSE 9000
 VOLUME /data/conf
+
+COPY /src/configs/config.yaml /data/conf/
 
 CMD ["./kratosent", "-conf", "/data/conf"]
