@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	olog "log"
 	"os"
 	"time"
 
@@ -99,6 +100,11 @@ func main() {
 	var bc conf.Bootstrap
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
+	}
+
+	if bc.Log == nil {
+		olog.Fatalln(bc.Log, flagconf)
+		return
 	}
 
 	logger := NewZapLoger(bc.Log)
