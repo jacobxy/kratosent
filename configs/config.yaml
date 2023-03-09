@@ -13,12 +13,12 @@ server:
 register:
   polaris:
     addrs:
-      - 127.0.0.1:8091
+      - 0.0.0.0:8091
     namespace: kratosent  
 # 配置中心
 mid_config:
   addrs:
-    - 127.0.0.1:8091
+    - 0.0.0.0:8091
   namespace: default
   file_group: polaris
   file_name: config.yaml
@@ -27,16 +27,16 @@ mid_config:
 data:
   database:
     driver: mysql
-    source: root:123456@tcp(127.0.0.1:3306)/test?parseTime=true&charset=utf8
+    source: root:123456@tcp(0.0.0.0:3306)/test?parseTime=true&charset=utf8
   redis:
-    addr: 127.0.0.1:6379
+    addr: 0.0.0.0:6379
     read_timeout: 0.2s
     write_timeout: 0.2s
 
   #grpc
   department:
     addrs:
-      - 127.0.0.1:8091
+      - 0.0.0.0:8091
     namespace: kratosent    
 
 # 中间件
