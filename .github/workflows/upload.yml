@@ -50,7 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.0.1
         with:
-          images: jacobli/web-server
+          images: jacobli/kratosent
     
       - name: Build and push Docker image
         uses: docker/build-push-action@v3.1.1
