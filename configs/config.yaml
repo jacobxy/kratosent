@@ -1,24 +1,24 @@
 # 服务
 server:
   http:
-    addr: 0.0.0.0:8000
+    addr: 192.168.106.27:8000
     timeout: 1s
   grpc:
-    addr: 0.0.0.0:9000
+    addr: 192.168.106.27:9000
     timeout: 1s
   websocket:
-    addr: 0.0.0.0:9001
+    addr: 192.168.106.27:9001
 
 # 注册中心
 register:
   polaris:
     addrs:
-      - 0.0.0.0:8091
+      - 192.168.106.27:8091
     namespace: kratosent  
 # 配置中心
 mid_config:
   addrs:
-    - 0.0.0.0:8091
+    - 192.168.106.27:8091
   namespace: default
   file_group: polaris
   file_name: config.yaml
@@ -27,16 +27,16 @@ mid_config:
 data:
   database:
     driver: mysql
-    source: root:123456@tcp(0.0.0.0:3306)/test?parseTime=true&charset=utf8
+    source: root:123456@tcp(192.168.106.27:3306)/test?parseTime=true&charset=utf8
   redis:
-    addr: 0.0.0.0:6379
+    addr: 192.168.106.27:6379
     read_timeout: 0.2s
     write_timeout: 0.2s
 
   #grpc
   department:
     addrs:
-      - 0.0.0.0:8091
+      - 192.168.106.27:8091
     namespace: kratosent    
 
 # 中间件
