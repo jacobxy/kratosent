@@ -1,13 +1,13 @@
 # 服务
 server:
   http:
-    addr: 192.168.106.27:8000
+    addr: 0.0.0.0:8000
     timeout: 1s
   grpc:
-    addr: 192.168.106.27:9000
+    addr: 0.0.0.0:9000
     timeout: 1s
   websocket:
-    addr: 192.168.106.27:9001
+    addr: 0.0.0.0:9001
 
 # 注册中心
 register:
