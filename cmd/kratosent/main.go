@@ -109,9 +109,9 @@ func main() {
 
 	logger := NewZapLoger(bc.Log)
 
-	mHolmes := NewHolmes()
-	mHolmes.Start()
-	defer mHolmes.Stop()
+	// mHolmes := NewHolmes()
+	// mHolmes.Start()
+	// defer mHolmes.Stop()
 
 	app, cleanup, err := wireApp(
 		bc.Server,
