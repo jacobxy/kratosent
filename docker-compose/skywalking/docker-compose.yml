@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+  elasticsearch:
+    image: elasticsearch:7.4.2
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    healthcheck:
+      test: ["CMD-SHEJLL", "curl --slient --fail localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "TZ=Asia/Shanghai"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
+    ulimits:
+      memlock: 
+        soft: -1
+        hard: -1
+  oap:
+    image: apache/skywalking-oap-server:8.9.1
+    container_name: oap
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    links:
+      - elasticsearch
+    ports:
+      - "11800:11800"
+      - "12800:12800"
+    healthcheck:
+      test: ["CMD_SHELL", "/skywalking/bin/swctl ch"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CCLUSTER_NODES: elasticsearch:9200
+      SW_HEALTH_CHECKER: default
+      SW_TELEMETRY: prometheus
+      TZ: Asia/Shanghai
+      JAVA_OPTS: -Xms512m -Xmx512m
+    volumes:
+    - ./oap/config/application.yml:/skywalking/config/application.yml
+    - ./oap/config/alarm-settings.yml:/skywalking/config/alarm-settings.yml
+  ui: 
+    image: apache/skywalking-ui:8.9.1
+    container_name: ui
+    depends_on:
+      oap:
+        condition: service_healthy  
+    links:
+      - oap
+    ports:
+      - "8080:8080"
+    environment:
+      SW_OAP_ADDRESS: oap:12800
+      TZ: Asia/Shanghai
+

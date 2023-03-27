@@ -1,0 +1,12 @@
+version: '3.8'
+services: 
+  redis:
+    image: redis:latest
+    container_name: my-redis
+    restart: always
+    volumes:
+      - ./redisconf/redis.conf:/etc/redis/redis.conf:ro 
+      - ./data:/data
+    command: redis-server /etc/redis/redis.conf
+    ports:
+      - 6379:6379

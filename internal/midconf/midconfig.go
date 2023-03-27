@@ -10,12 +10,14 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// MidConfig 配置中心
 type MidConfig struct {
 	WhiteList []string `yaml:"white_list"`
 }
 
 var midconfig atomic.Value
 
+// NewMidConfig 北极星配置中心
 func NewMidConfig(config *conf.MidConfig) error {
 	sdk, err := polaris.NewSDKContextByAddress(config.Addrs...)
 	if err != nil {

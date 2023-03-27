@@ -28,7 +28,7 @@ func (s *DepartmentService) CreateDepartment(ctx context.Context, req *pb.Create
 	if md, ok := metadata.FromServerContext(ctx); ok {
 		// if md, ok := metadata.FromClientContext(ctx); ok {
 		extra = md.Get("x-md-global-extra")
-		log.Println("extra:", extra)
+		log.Println("extra:", extra, req)
 	}
 
 	id, err := s.uc.Create(ctx, &biz.DepartmentInfo{

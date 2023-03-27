@@ -26,8 +26,8 @@ type RegisterGRPCFunc func(*grpc.Server)
 type RegisterHTTPFunc func(*http.Server)
 
 func NewGRPCServiceSlice(
-	greeter *GreeterService,
-	dep *DepartmentService,
+	greeter *GreeterService, // Gretter 服务
+	dep *DepartmentService, //dep 服务
 	r *RoleService,
 ) []RegisterGRPCFunc {
 	res := make([]RegisterGRPCFunc, 0, 5)
@@ -45,7 +45,7 @@ func NewGRPCServiceSlice(
 }
 
 func NewHTTPServiceSlice(
-	greeter *GreeterService,
+	greeter *GreeterService, // Gretter
 	dep *DepartmentService,
 	r *RoleService,
 ) []RegisterHTTPFunc {
