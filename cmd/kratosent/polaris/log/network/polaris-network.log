@@ -5888,3 +5888,53 @@
 2023-03-19 02:08:57.159245Z	info	network	network/conn.go:100	connection {ID: 2542816502, Address: 127.0.0.1:8091}: close, curRef is 0
 2023-03-19 02:09:10.981390Z	info	network	network/conn.go:100	connection {ID: 1391399370, Address: 127.0.0.1:8091}: close, curRef is 0
 2023-03-19 02:09:11.525968Z	info	network	network/conn.go:100	connection {ID: 3716493896, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 16:30:11.452223Z	error	network	network/impl.go:378	fail to get connection, opKey is ReportClient, cluster discover, error is fail to connect to 127.0.0.1:8091, timeout is 501.161ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: builtin}, because context deadline exceeded
+2023-04-01 16:30:11.957354Z	error	network	network/impl.go:378	fail to get connection, opKey is ReportClient, cluster discover, error is fail to connect to 127.0.0.1:8091, timeout is 500.454834ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: builtin}, because context deadline exceeded
+2023-04-01 16:30:12.463170Z	error	network	network/impl.go:378	fail to get connection, opKey is ReportClient, cluster discover, error is fail to connect to 127.0.0.1:8091, timeout is 500.440916ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: builtin}, because context deadline exceeded
+2023-04-01 16:30:12.964255Z	error	network	network/impl.go:378	fail to get connection, opKey is GetConfigFile, cluster config, error is fail to connect to 127.0.0.1:8093, timeout is 500.385792ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: config}, because context deadline exceeded
+2023-04-01 16:30:14.973807Z	error	network	network/impl.go:378	fail to get connection, opKey is GetConfigFile, cluster config, error is fail to connect to 127.0.0.1:8093, timeout is 500.382084ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: config}, because context deadline exceeded
+2023-04-01 16:30:17.983503Z	error	network	network/impl.go:378	fail to get connection, opKey is GetConfigFile, cluster config, error is fail to connect to 127.0.0.1:8093, timeout is 500.623208ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: config}, because context deadline exceeded
+2023-04-01 16:30:22.993338Z	error	network	network/impl.go:378	fail to get connection, opKey is RegisterInstance, cluster discover, error is fail to connect to 127.0.0.1:8091, timeout is 500.414667ms, service is {ServiceKey: {namespace: "Polaris", service: "polaris-default"}, ClusterType: builtin}, because context deadline exceeded
+2023-04-01 18:53:45.373689Z	info	network	network/conn.go:100	connection {ID: 964313386, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:53:45.395962Z	info	network	network/conn.go:100	connection {ID: 3759931260, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:53:45.426865Z	info	network	network/conn.go:100	connection {ID: 2450603783, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:53:45.438141Z	info	network	network/conn.go:100	connection {ID: 3773801636, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:53:45.979719Z	info	network	network/conn.go:100	connection {ID: 3335709768, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:53:46.492151Z	info	network	network/conn.go:100	connection {ID: 2089695744, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:54:21.616682Z	info	network	network/conn.go:100	connection {ID: 2910187589, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:54:26.486827Z	info	network	network/conn.go:100	connection {ID: 1589200246, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:54:27.003101Z	info	network	network/conn.go:100	connection {ID: 3066860166, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:54:52.614380Z	info	network	network/conn.go:100	connection {ID: 1129655586, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:55:06.493043Z	info	network	network/conn.go:100	connection {ID: 2708705243, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:55:06.999038Z	info	network	network/conn.go:100	connection {ID: 3843034532, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:55:23.615301Z	info	network	network/conn.go:100	connection {ID: 347541155, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:55:46.491541Z	info	network	network/conn.go:100	connection {ID: 3428076308, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:55:46.998021Z	info	network	network/conn.go:100	connection {ID: 1136968201, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:55:54.614439Z	info	network	network/conn.go:100	connection {ID: 2073581640, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:56:25.613597Z	info	network	network/conn.go:100	connection {ID: 1120099012, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:56:26.491106Z	info	network	network/conn.go:100	connection {ID: 522927157, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:56:27.000422Z	info	network	network/conn.go:100	connection {ID: 344321065, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:56:45.864647Z	info	network	network/conn.go:100	connection {ID: 3117522711, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:56:45.882519Z	info	network	network/conn.go:100	connection {ID: 2731723512, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:56:45.903915Z	info	network	network/conn.go:100	connection {ID: 2498090029, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:56:56.614168Z	info	network	network/conn.go:100	connection {ID: 1791867271, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:57:06.482144Z	info	network	network/conn.go:100	connection {ID: 458194826, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:57:07.005134Z	info	network	network/conn.go:100	connection {ID: 2103560242, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:57:27.614101Z	info	network	network/conn.go:100	connection {ID: 509725710, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:57:46.484555Z	info	network	network/conn.go:100	connection {ID: 272909931, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:57:47.002415Z	info	network	network/conn.go:100	connection {ID: 2902111638, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:57:58.613663Z	info	network	network/conn.go:100	connection {ID: 205943430, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:58:26.493404Z	info	network	network/conn.go:100	connection {ID: 4152018721, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:58:27.000762Z	info	network	network/conn.go:100	connection {ID: 4197494922, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:58:29.613723Z	info	network	network/conn.go:100	connection {ID: 2088145117, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:59:00.615950Z	info	network	network/conn.go:100	connection {ID: 1550278647, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:59:06.491501Z	info	network	network/conn.go:100	connection {ID: 445141002, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:07.003741Z	info	network	network/conn.go:100	connection {ID: 2904562308, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:31.613277Z	info	network	network/conn.go:100	connection {ID: 3955625217, Address: 127.0.0.1:8093}: close, curRef is 0
+2023-04-01 18:59:45.855374Z	info	network	network/conn.go:100	connection {ID: 2845017430, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:45.888089Z	info	network	network/conn.go:100	connection {ID: 2656892816, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:45.910043Z	info	network	network/conn.go:100	connection {ID: 2135921061, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:46.487375Z	info	network	network/conn.go:100	connection {ID: 3041081065, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:46.999198Z	info	network	network/conn.go:100	connection {ID: 2280830172, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:54.134589Z	info	network	network/conn.go:100	connection {ID: 4200576619, Address: 127.0.0.1:8091}: close, curRef is 0
+2023-04-01 18:59:54.681958Z	info	network	network/conn.go:100	connection {ID: 956176776, Address: 127.0.0.1:8091}: close, curRef is 0

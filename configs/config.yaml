@@ -13,12 +13,12 @@ server:
 register:
   polaris:
     addrs:
-      - 127.0.0.1:8091
+      - 192.168.10.47:8091
     namespace: kratosent  
 # 配置中心
 mid_config:
   addrs:
-    - 127.0.0.1:8091
+    - 192.168.10.47:8091
   namespace: default
   file_group: polaris
   file_name: config.yaml
@@ -36,7 +36,7 @@ data:
   #grpc
   department:
     addrs:
-      - 127.0.0.1:8091
+      - 192.168.10.47:8091
     namespace: kratosent    
 
 # 中间件
