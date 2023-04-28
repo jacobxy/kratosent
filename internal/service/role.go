@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"log"
 
 	pb "kratosent/api/role"
 	"kratosent/internal/biz"
@@ -66,6 +67,7 @@ func (s *RoleService) GetRole(ctx context.Context, req *pb.GetRoleRequest) (*pb.
 	}, nil
 }
 func (s *RoleService) ListRole(ctx context.Context, req *pb.ListRoleRequest) (*pb.ListRoleReply, error) {
+	log.Println("ListRole ", req.Ids)
 	roleInfos, err := s.u.ListRole(ctx, req.Ids)
 	if err != nil {
 		return nil, err
