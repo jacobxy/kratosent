@@ -107,6 +107,9 @@ func (r *RoleRepo) List(ctx context.Context, roleIDs []int64) ([]*biz.RoleInfo, 
 	}
 	res := make([]*biz.RoleInfo, 0, len(roles))
 	err = copier.Copy(&res, &roles)
+	if err != nil {
+		return nil, err
+	}
 
 	datas := make(map[string]interface{}, len(res))
 	for _, v := range res {
