@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-kratos/kratos/contrib/polaris/v2"
 	"github.com/go-kratos/kratos/v2/log"
+	redis "github.com/go-redis/redis"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/wire"
 	polarisV2 "github.com/polarismesh/polaris-go"
@@ -24,7 +25,8 @@ var ProviderSet = wire.NewSet(
 type Data struct {
 	EntClient *ent.Client
 	// sdk       api.SDKContext
-	pol *polaris.Polaris
+	pol      *polaris.Polaris
+	redisCli *redis.Client
 }
 
 // NewData .
@@ -42,8 +44,15 @@ func NewData(entCli *ent.Client, data *conf.Data, logger log.Logger) (*Data, fun
 		polaris.WithNamespace(data.Department.Namespace),
 	)
 
+	redisCli := redis.NewClient(&redis.Options{
+		Addr:         data.Redis.Addr,
+		ReadTimeout:  data.Redis.ReadTimeout.AsDuration(),
+		WriteTimeout: data.Redis.WriteTimeout.AsDuration(),
+	})
+
 	return &Data{
 		EntClient: entCli,
 		pol:       &pol,
+		redisCli:  redisCli,
 	}, cleanup, nil
 }

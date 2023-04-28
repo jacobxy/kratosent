@@ -29,9 +29,9 @@ data:
     driver: mysql
     source: root:123456@tcp(mysql-svc:3306)/test?parseTime=true&charset=utf8
   redis:
-    addr: 127.0.0.1:6379
-    read_timeout: 0.2s
-    write_timeout: 0.2s
+    addr: redis-svc:16379
+    read_timeout: 1s
+    write_timeout: 1s
 
   #grpc
   department:

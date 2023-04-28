@@ -8,6 +8,7 @@ require (
 	github.com/go-kratos/kratos/contrib/metrics/prometheus/v2 v2.0.0-20230223102623-19f008b48379
 	github.com/go-kratos/kratos/contrib/polaris/v2 v2.0.0-20230223102623-19f008b48379
 	github.com/go-kratos/kratos/v2 v2.5.4
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/wire v0.5.0
 	github.com/jinzhu/copier v0.3.5

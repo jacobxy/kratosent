@@ -5,6 +5,7 @@ import (
 	v1 "kratosent/api/department/v1"
 	"kratosent/ent/role"
 	"kratosent/internal/biz"
+	"strconv"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/metadata"
@@ -82,6 +83,16 @@ func (r *RoleRepo) Delete(ctx context.Context, roleID int64) (int64, error) {
 func (r *RoleRepo) List(ctx context.Context, roleIDs []int64) ([]*biz.RoleInfo, error) {
 	cli := r.data.EntClient
 	query := cli.Role.Query()
+	roleList := make([]string, 0, len(roleIDs))
+	for _, v := range roleIDs {
+		roleList = append(roleList, strconv.Itoa(int(v)))
+	}
+	list, err := r.data.redisCli.HMGet("role", roleList...).Result()
+	if err != nil && len(list) != 0 {
+		res := make([]*biz.RoleInfo, 0, len(list))
+		err = copier.Copy(&res, &list)
+		return res, err
+	}
 	switch len(roleIDs) {
 	case 0:
 	case 1:
@@ -95,5 +106,11 @@ func (r *RoleRepo) List(ctx context.Context, roleIDs []int64) ([]*biz.RoleInfo, 
 	}
 	res := make([]*biz.RoleInfo, 0, len(roles))
 	err = copier.Copy(&res, &roles)
+
+	datas := make(map[string]interface{}, len(res))
+	for _, v := range res {
+		datas[strconv.Itoa(int(v.ID))] = v
+	}
+	r.data.redisCli.HMSet("role", datas)
 	return res, err
 }
