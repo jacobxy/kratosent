@@ -30,7 +30,7 @@ data:
     source: root:123456@tcp(mysql-svc:3306)/test?parseTime=true&charset=utf8
   redis:
     addr: redis-svc:16379
-    password: 123456
+    password: "123456"
     read_timeout: 1s
     write_timeout: 1s
 
