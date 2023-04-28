@@ -2,6 +2,7 @@ package data
 
 import (
 	"context"
+	"fmt"
 	v1 "kratosent/api/department/v1"
 	"kratosent/ent/role"
 	"kratosent/internal/biz"
@@ -111,6 +112,7 @@ func (r *RoleRepo) List(ctx context.Context, roleIDs []int64) ([]*biz.RoleInfo, 
 	for _, v := range res {
 		datas[strconv.Itoa(int(v.ID))] = v
 	}
-	r.data.redisCli.HMSet("role", datas)
+	err = r.data.redisCli.HMSet("role", datas).Err()
+	fmt.Println("HMSET ", len(datas), err)
 	return res, err
 }
