@@ -88,12 +88,9 @@ func (r *RoleRepo) List(ctx context.Context, roleIDs []int64) ([]*biz.RoleInfo, 
 	for _, v := range roleIDs {
 		roleList = append(roleList, strconv.Itoa(int(v)))
 	}
-	list, err := r.data.redisCli.HMGet("role", roleList...).Result()
-	if err != nil && len(list) != 0 {
-		res := make([]*biz.RoleInfo, 0, len(list))
-		err = copier.Copy(&res, &list)
-		return res, err
-	}
+	list, _ := r.data.redisCli.HMGet("role", roleList...).Result()
+	fmt.Println("redis role --> ", list)
+
 	switch len(roleIDs) {
 	case 0:
 	case 1:
