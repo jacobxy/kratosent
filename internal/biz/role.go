@@ -2,14 +2,19 @@ package biz
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-kratos/kratos/v2/log"
 )
 
 type RoleInfo struct {
-	ID          int64 `json:"id"`
-	Name        string
-	Description string
+	ID          int64  `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+}
+
+func (r *RoleInfo) MarshalBinary() ([]byte, error) {
+	return json.Marshal(r)
 }
 
 type RoleRepo interface {
