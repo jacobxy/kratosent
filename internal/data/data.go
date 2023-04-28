@@ -48,6 +48,7 @@ func NewData(entCli *ent.Client, data *conf.Data, logger log.Logger) (*Data, fun
 		Addr:         data.Redis.Addr,
 		ReadTimeout:  data.Redis.ReadTimeout.AsDuration(),
 		WriteTimeout: data.Redis.WriteTimeout.AsDuration(),
+		Password:     data.Redis.Password,
 	})
 
 	return &Data{
