@@ -27,7 +27,7 @@ mid_config:
 data:
   database:
     driver: mysql
-    source: root:123456@tcp(my-mysql:3306)/db?parseTime=true&charset=utf8
+    source: root:123456@tcp(my-mysql:3306)/my_database?parseTime=true&charset=utf8
   redis:
     addr: redis-svc:16379
     password: "123456"
