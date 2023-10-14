@@ -44,12 +44,11 @@ func NewData(entCli *ent.Client, data *conf.Data, logger log.Logger) (*Data, fun
 		polaris.WithNamespace(data.Department.Namespace),
 	)
 
-	redisCli := redis.NewClient(&redis.Options{
-		Addr:         data.Redis.Addr,
-		ReadTimeout:  data.Redis.ReadTimeout.AsDuration(),
-		WriteTimeout: data.Redis.WriteTimeout.AsDuration(),
-		Password:     data.Redis.Password,
+	redisCli := redis.NewClusterClient(&redis.ClusterOptions{
+		Addrs:    []string{data.Redis.Addr},
+		Password: data.Redis.Password,
 	})
+	log.Info(redisCli.Ping().Err())
 
 	return &Data{
 		EntClient: entCli,
