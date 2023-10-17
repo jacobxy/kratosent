@@ -26,7 +26,7 @@ type Data struct {
 	EntClient *ent.Client
 	// sdk       api.SDKContext
 	pol      *polaris.Polaris
-	redisCli *redis.Client
+	redisCli *redis.ClusterClient
 }
 
 // NewData .
